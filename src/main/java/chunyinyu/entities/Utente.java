@@ -2,7 +2,9 @@ package chunyinyu.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "utenti")
@@ -18,6 +20,34 @@ public class Utente {
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public Date getDataNascita() {
+        return dataNascita;
+    }
+
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
+    }
+
+    public long getNumeroTessera() {
+        return numeroTessera;
     }
 
     @Override
