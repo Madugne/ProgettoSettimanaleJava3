@@ -66,6 +66,5 @@ public class Application {
         System.out.println("Ricerca elementi scaduti" + (archivioDAO.ricercaElementiPrestatiScadutiNonRestituiti(2L)));
 
         archivioDAO.rimuoviElemento(2L);
-        System.out.println("Ricerca per isbn: " + (archivioDAO.ricercaIsbn(2L)));
     }
 }
