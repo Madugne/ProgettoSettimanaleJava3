@@ -11,11 +11,15 @@ public class Rivista extends ElementoLetterario{
     @Column(name = "periodita'")
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
+    @OneToOne
+    private ElementoLetterario elemento;
 
     public Rivista(String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
         super(titolo, annoPubblicazione, numeroPagine);
         this.periodicita = periodicita;
     }
+
+    public Rivista(){}
 
     public Periodicita getPeriodicita() {
         return periodicita;

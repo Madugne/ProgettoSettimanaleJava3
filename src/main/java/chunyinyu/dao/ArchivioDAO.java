@@ -33,15 +33,15 @@ public class ArchivioDAO {
         return elementoDAO.getById(isbn);
     }
 
-    public ElementoLetterario ricercaAnno(int anno){
+    public List<ElementoLetterario> ricercaAnno(int anno){
         return elementoDAO.getByAnno(anno);
     }
 
-    public ElementoLetterario ricercaAutore(String autore){
+    public List<ElementoLetterario> ricercaAutore(String autore){
         return elementoDAO.getByAutore(autore);
     }
 
-    public ElementoLetterario ricercaTitolo(String titolo){
+    public List<ElementoLetterario> ricercaTitolo(String titolo){
         return elementoDAO.getByTitolo(titolo);
     }
 

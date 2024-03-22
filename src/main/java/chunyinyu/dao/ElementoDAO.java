@@ -6,6 +6,10 @@ import chunyinyu.exceptions.ElementException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ElementoDAO {
     private final EntityManager entityManager;
     public ElementoDAO(EntityManager entityManager) {
@@ -26,8 +30,8 @@ public class ElementoDAO {
         return elementoLetterario;
     }
 
-    public void delete(long id) {
-        ElementoLetterario elementoLetterario = getById(id);
+    public void delete(long isbn) {
+        ElementoLetterario elementoLetterario = getById(isbn);
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.remove(elementoLetterario);
@@ -35,21 +39,24 @@ public class ElementoDAO {
         System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " rimosso");
     }
 
-    public ElementoLetterario getByAnno(int anno) {
-        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, anno);
-        if (elementoLetterario == null) throw new ElementException();
-        return elementoLetterario;
+    public List<ElementoLetterario> getByAnno(int anno) {
+        List<ElementoLetterario> elementi = entityManager.createQuery("SELECT e FROM ElementoLetterario e WHERE e.annoPubblicazione = :anno", ElementoLetterario.class)
+                .setParameter("anno", anno)
+                .getResultList();
+        return elementi;
     }
 
-    public ElementoLetterario getByAutore(String autore) {
-        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, autore);
-        if (elementoLetterario == null) throw new ElementException();
-        return elementoLetterario;
+    public List<ElementoLetterario> getByAutore(String autore) {
+        List<ElementoLetterario> elementi = entityManager.createQuery("SELECT e FROM ElementoLetterario e WHERE e.autore = :autore", ElementoLetterario.class)
+                .setParameter("autore", autore)
+                .getResultList();
+        return elementi;
     }
 
-    public ElementoLetterario getByTitolo(String titolo) {
-        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, "%"+"titolo"+"%");
-        if (elementoLetterario == null) throw new ElementException();
-        return elementoLetterario;
+    public List<ElementoLetterario> getByTitolo(String titolo) {
+        List<ElementoLetterario> elementi = entityManager.createQuery("SELECT e FROM ElementoLetterario e WHERE e.titolo LIKE :titolo", ElementoLetterario.class)
+                .setParameter("titolo", titolo + "%")
+                .getResultList();
+        return elementi;
     }
 }

@@ -1,6 +1,7 @@
 package chunyinyu.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -14,7 +15,7 @@ public class Prestito {
     @ManyToOne
     @JoinColumn(name = "utente_id")
     private Utente utente;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "elementi_prestati")
     private ElementoLetterario elementoPrestato;
     private LocalDate dataInizioPrestito;
@@ -27,6 +28,9 @@ public class Prestito {
         this.dataInizioPrestito = dataInizioPrestito;
         this.dataRestituzionePrevista = this.dataInizioPrestito.plusDays(30);
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+    }
+
+    public Prestito() {
     }
 
     public Utente getUtente() {

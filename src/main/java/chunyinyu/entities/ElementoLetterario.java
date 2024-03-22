@@ -1,11 +1,14 @@
 package chunyinyu.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "elemento")
 public abstract class ElementoLetterario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,12 +18,17 @@ public abstract class ElementoLetterario {
     private int annoPubblicazione;
     @Column(name = "numero_pagine")
     private int numeroPagine;
-
+    @OneToOne(mappedBy = "elemento",cascade = CascadeType.REMOVE)
+    private Libro libro;
+    @OneToOne(mappedBy = "elemento",cascade = CascadeType.REMOVE)
+    private Rivista rivista;
     public ElementoLetterario(String titolo, int annoPubblicazione, int numeroPagine) {
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.numeroPagine = numeroPagine;
     }
+
+    public ElementoLetterario(){}
 
     public String getTitolo() {
         return titolo;

@@ -1,6 +1,7 @@
 package chunyinyu.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 
@@ -9,11 +10,15 @@ import jakarta.persistence.Table;
 public class Libro extends ElementoLetterario{
     private String autore;
     private String genere;
+    @OneToOne
+    private ElementoLetterario elemento;
     public Libro(String titolo, int annoPubblicazione, int numeroPagine, String autore, String genere) {
         super(titolo, annoPubblicazione, numeroPagine);
         this.autore = autore;
         this.genere = genere;
     }
+
+    public Libro(){}
 
     public String getAutore() {
         return autore;
@@ -34,6 +39,8 @@ public class Libro extends ElementoLetterario{
     @Override
     public String toString() {
         return "Libro{" +
+                "titolo='" + super.getTitolo() + '\'' +
+                "pagine='" + super.getNumeroPagine() + '\'' +
                 "autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
                 '}';

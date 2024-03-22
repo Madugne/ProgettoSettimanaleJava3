@@ -30,13 +30,13 @@ public class Application {
         ElementoLetterario elemento6 = new Rivista("ISBN7", 2001, 30, Periodicita.MENSILE);
         ElementoLetterario elemento7 = new Rivista("ISBN8", 2002, 40, Periodicita.SEMESTRALE);
 
-        Prestito prestito1 = new Prestito(utente1, elemento1, LocalDate.of(2024, 3, 1 ), null);
-        Prestito prestito2 = new Prestito(utente1, elemento2, LocalDate.of(2023, 3, 1 ), null);
-        Prestito prestito3 = new Prestito(utente1, elemento3, LocalDate.of(2022, 3, 1 ), null);
-        Prestito prestito4 = new Prestito(utente2, elemento4, LocalDate.of(2022, 3, 1 ), null);
-        Prestito prestito5 = new Prestito(utente2, elemento5, LocalDate.of(2023, 3, 1 ), null);
-        Prestito prestito6 = new Prestito(utente2, elemento6, LocalDate.of(2024, 3, 1 ), null);
-        Prestito prestito7 = new Prestito(utente2, elemento7, LocalDate.of(2021, 3, 1 ), null);
+        Prestito prestito1 = new Prestito(utente1, elemento1, LocalDate.of(2024, 4, 30), null);
+        Prestito prestito2 = new Prestito(utente1, elemento2, LocalDate.of(2024, 4, 22), null);
+        Prestito prestito3 = new Prestito(utente1, elemento3, LocalDate.of(2024, 4, 11), null);
+        Prestito prestito4 = new Prestito(utente2, elemento4, LocalDate.of(2022, 3, 1), null);
+        Prestito prestito5 = new Prestito(utente2, elemento5, LocalDate.of(2023, 3, 1), null);
+        Prestito prestito6 = new Prestito(utente2, elemento6, LocalDate.of(2024, 3, 1), null);
+        Prestito prestito7 = new Prestito(utente2, elemento7, LocalDate.of(2021, 3, 1), null);
 
         archivioDAO.save(utente1);
         archivioDAO.save(utente2);
@@ -57,6 +57,15 @@ public class Application {
         archivioDAO.save(prestito6);
         archivioDAO.save(prestito7);
 
-        
+        System.out.println("Ricerca per isbn: " + (archivioDAO.ricercaIsbn(1L)));
+        System.out.println("Ricerca per anno: " + (archivioDAO.ricercaAnno(1984)));
+        System.out.println("Ricerca per autore: " + (archivioDAO.ricercaAutore("Akira Toriyama")));
+        System.out.println("Ricerca per titolo: " + (archivioDAO.ricercaTitolo("Dragon")));
+
+        System.out.println("Ricerca elementi in prestito" + (archivioDAO.ricercaElementiPrestati(1L)));
+        System.out.println("Ricerca elementi scaduti" + (archivioDAO.ricercaElementiPrestatiScadutiNonRestituiti(2L)));
+
+        archivioDAO.rimuoviElemento(2L);
+        System.out.println("Ricerca per isbn: " + (archivioDAO.ricercaIsbn(2L)));
     }
 }

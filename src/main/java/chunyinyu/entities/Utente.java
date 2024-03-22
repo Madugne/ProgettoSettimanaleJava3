@@ -23,6 +23,9 @@ public class Utente {
         this.dataNascita = dataNascita;
     }
 
+    public Utente() {
+    }
+
     public String getNome() {
         return nome;
     }
