@@ -34,4 +34,22 @@ public class ElementoDAO {
         transaction.commit();
         System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " rimosso");
     }
+
+    public ElementoLetterario getByAnno(int anno) {
+        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, anno);
+        if (elementoLetterario == null) throw new ElementException();
+        return elementoLetterario;
+    }
+
+    public ElementoLetterario getByAutore(String autore) {
+        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, autore);
+        if (elementoLetterario == null) throw new ElementException();
+        return elementoLetterario;
+    }
+
+    public ElementoLetterario getByTitolo(String titolo) {
+        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, "%"+"titolo"+"%");
+        if (elementoLetterario == null) throw new ElementException();
+        return elementoLetterario;
+    }
 }

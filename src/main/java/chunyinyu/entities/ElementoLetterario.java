@@ -12,11 +12,11 @@ public abstract class ElementoLetterario {
     private long isbn;
     private String titolo;
     @Column(name = "anno_pubblicazione")
-    private Date annoPubblicazione;
+    private int annoPubblicazione;
     @Column(name = "numero_pagine")
     private int numeroPagine;
 
-    public ElementoLetterario(long isbn, String titolo, Date annoPubblicazione, int numeroPagine) {
+    public ElementoLetterario(long isbn, String titolo, int annoPubblicazione, int numeroPagine) {
         this.isbn = isbn;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
@@ -31,11 +31,11 @@ public abstract class ElementoLetterario {
         this.titolo = titolo;
     }
 
-    public Date getAnnoPubblicazione() {
+    public int getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 
-    public void setAnnoPubblicazione(Date annoPubblicazione) {
+    public void setAnnoPubblicazione(int annoPubblicazione) {
         this.annoPubblicazione = annoPubblicazione;
     }
 
