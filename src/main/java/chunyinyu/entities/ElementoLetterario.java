@@ -16,8 +16,7 @@ public abstract class ElementoLetterario {
     @Column(name = "numero_pagine")
     private int numeroPagine;
 
-    public ElementoLetterario(long isbn, String titolo, int annoPubblicazione, int numeroPagine) {
-        this.isbn = isbn;
+    public ElementoLetterario(String titolo, int annoPubblicazione, int numeroPagine) {
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
         this.numeroPagine = numeroPagine;

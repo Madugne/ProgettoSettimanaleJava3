@@ -1,6 +1,7 @@
 package chunyinyu.dao;
 
 import chunyinyu.entities.ElementoLetterario;
+import chunyinyu.entities.Prestito;
 import chunyinyu.entities.Utente;
 import jakarta.persistence.EntityManager;
 
@@ -47,8 +48,30 @@ public class ArchivioDAO {
     public List<ElementoLetterario> ricercaElementiPrestati(long numeroTessera) {
         List<ElementoLetterario> listaElementoLetterario = new ArrayList<>();
 
-        
+        List<Long> listaElementiIsbn = prestitoDAO.getElementoIdByNumeroTesseraPrestati(numeroTessera);
+        listaElementiIsbn.forEach(elemento -> listaElementoLetterario.add(ricercaIsbn(elemento)));
 
         return listaElementoLetterario;
+    }
+
+    public List<ElementoLetterario> ricercaElementiPrestatiScadutiNonRestituiti(long numeroTessera) {
+        List<ElementoLetterario> listaElementoLetterario = new ArrayList<>();
+
+        List<Long> listaElementiIsbn = prestitoDAO.getElementoIdByNumeroTesseraScadutiNonRestituiti(numeroTessera);
+        listaElementiIsbn.forEach(elemento -> listaElementoLetterario.add(ricercaIsbn(elemento)));
+
+        return listaElementoLetterario;
+    }
+
+    public void save(ElementoLetterario elementoLetterario) {
+        elementoDAO.save(elementoLetterario);
+    }
+
+    public void save(Utente utente) {
+        utenteDAO.save(utente);
+    }
+
+    public void save(Prestito prestito) {
+        prestitoDAO.save(prestito);
     }
 }

@@ -12,8 +12,8 @@ public class Rivista extends ElementoLetterario{
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
 
-    public Rivista(long isbn, String titolo, Date annoPubblicazione, int numeroPagine, Periodicita periodicita) {
-        super(isbn, titolo, annoPubblicazione, numeroPagine);
+    public Rivista(String titolo, int annoPubblicazione, int numeroPagine, Periodicita periodicita) {
+        super(titolo, annoPubblicazione, numeroPagine);
         this.periodicita = periodicita;
     }
 

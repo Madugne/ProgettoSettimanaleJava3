@@ -17,7 +17,7 @@ public class ElementoDAO {
         transaction.begin();
         entityManager.persist(elementoLetterario);
         transaction.commit();
-        System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " rimosso");
+        System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " salvato");
     }
 
     public ElementoLetterario getById(long id){

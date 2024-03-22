@@ -2,6 +2,7 @@ package chunyinyu.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,9 +15,9 @@ public class Utente {
     private long numeroTessera;
     private String nome;
     private String cognome;
-    private Date dataNascita;
+    private LocalDate dataNascita;
 
-    public Utente(String nome, String cognome, Date dataNascita) {
+    public Utente(String nome, String cognome, LocalDate dataNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
@@ -38,11 +39,11 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public Date getDataNascita() {
+    public LocalDate getDataNascita() {
         return dataNascita;
     }
 
-    public void setDataNascita(Date dataNascita) {
+    public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
 
