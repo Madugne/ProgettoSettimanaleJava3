@@ -24,8 +24,8 @@ public class ElementoDAO {
         System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " salvato");
     }
 
-    public ElementoLetterario getById(long id){
-        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, id);
+    public ElementoLetterario getById(long isbn){
+        ElementoLetterario elementoLetterario = entityManager.find(ElementoLetterario.class, isbn);
         if (elementoLetterario == null) throw new ElementException();
         return elementoLetterario;
     }
@@ -36,7 +36,7 @@ public class ElementoDAO {
         transaction.begin();
         entityManager.remove(elementoLetterario);
         transaction.commit();
-        System.out.println("Elemento letterario " + elementoLetterario.getIsbn() + " rimosso");
+        System.out.println("Elemento letterario rimosso");
     }
 
     public List<ElementoLetterario> getByAnno(int anno) {
